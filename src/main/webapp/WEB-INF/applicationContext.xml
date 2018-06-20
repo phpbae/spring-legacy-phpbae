@@ -27,4 +27,8 @@
         <property name="password" value="1234"></property>
     </bean>
 
+    <!-- BeanLifeCycleTest -->
+    <bean id="beanLifeCycleTest" class="com.phpbae.web.business.service.BeanLifeCycleTest" init-method="initMethod" destroy-method="destroyMethod">
+    </bean>
+
 </beans>
