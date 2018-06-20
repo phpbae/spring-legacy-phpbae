@@ -61,6 +61,18 @@ JPA는 EntityManager를 생성해서 사용하며, 취득하는 방법은 Entity
 - SampleController2
 ```
 해당 컨트롤러에는 spring bean 생명주기 예제 코드가 작성되어 있습니다.
+
+Bean scope(총 5가지)
+- singleton : default / 싱글턴으로 인스턴스를 생성
+- prototype : 이용할 때마다 인스턴스 생성 getBean()
+- request : request 스코프인 동안만 인스턴스 생존 (각각의 HTTP request 는 자신만의 인스턴스를 가짐)
+- session : session 스코프인 동안만 인스턴스 생존
+- application : application 스코프인 동안만 인스턴스 생존
+
+@Scope(value = "")
+<bean id="beanLifeCycleTest" class="com.phpbae.web.business.service.BeanLifeCycleTest" scope="singleton"></bean>
+
+
 bean 생명주기는 
 1. InitializingBean / DisposableBean 인터페이스 구현
 2. @PostConstruct / @PreDestroy

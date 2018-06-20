@@ -28,7 +28,7 @@
     </bean>
 
     <!-- BeanLifeCycleTest -->
-    <bean id="beanLifeCycleTest" class="com.phpbae.web.business.service.BeanLifeCycleTest" init-method="initMethod" destroy-method="destroyMethod">
+    <bean id="beanLifeCycleTest" class="com.phpbae.web.business.service.BeanLifeCycleTest" init-method="initMethod" destroy-method="destroyMethod" scope="singleton">
     </bean>
 
 </beans>
