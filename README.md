@@ -35,13 +35,70 @@ spring-data-jpa
 ## Note
 
 - spring legacy 환경으로 프로젝트 구성. (maven 기반)
-- applicationContext.xml 에 환경설정
+- applicationContext.xml 및 dispatcher-servlet.xml 환경설정
 ```
 1. component-scan
 2. annotation-driven
 3. InternalResourceViewResolver  //Spring MVC에서 View는 사용자에게 결과를 랜더링하여 보여주는 Bean
 4. resource handler mapping
 5. dataSource //org.springframework.jdbc.datasource.DriverManagerDataSource
+```
+
+```
+dispatcher-servlet.xml / applicationContext.xml 관계에 대한 내용
+- 스프링 MVC는 1개 이상의 DispatcherServlet 설정이 가능.
+- DispatcherServlet 설정은 web.xml 파일에 설정 내용을 작성한다.
+<servlet>
+<servlet-name>dispatcer</servlet-name>
+<servlet-class>
+org.springframework.web.servlet.DispatcerServlet
+</servlet-class>
+</servlet>
+- 위와 같이 설정을 하였다면,  <servlet-name>-servlet.xml 파일을 로드하게 된다.
+
+- 다른 설정파일을 사용하고 싶은경우에는, contextConfigLocation 초기화 파라미터에 설정 파일 목록을 지정 
+<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+</context-param>
+
+- 만약, 2개 이상의 dispatcher servlet을 설정하면, 각각 별도의 WebApplicationContext를 생성하는데 서로 설정된 Bean을 참조하고 싶다면 ContextLoaderListener를 사용하여 공통으로 사용될 빈을 설정할 수 있게 된다. 다음과 같이 ContextLoaderListener를 ServletListener로 등록.
+- 웹 어플리케이션이 시작되는 시점에 ApplicationContext을 로딩하며, 로딩된 빈정보는 모든 WebApplicationContext들이 참조할 수 있다.
+<listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+
+//------------- 예제
+<!-- ApplicationContext 빈 설정 파일-->
+<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>/WEB-INF/config/easycompany-service.xml,/WEB-INF/config/easycompany-dao.xml</param-value>
+</context-param>
+	
+<listener>
+	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+
+<servlet>
+	<servlet-name>employee</servlet-name>
+	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/config/easycompany-service.xml</param-value>
+	</init-param>
+</servlet>
+
+<servlet>
+	<servlet-name>webservice</servlet-name>
+	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/config/easycompany-webservice.xml</param-value>
+	</init-param>
+</servlet>
+
+- employee-servlet 과 webservice-servlet.xml 에 정의된 Bean들은 서로 참조할 수 없지만, easycompany-service.xml / easycompany-dao.xml 에 정의된 Bean들은 참조가 가능하다. 
+
 ```
 
 - SampleController
