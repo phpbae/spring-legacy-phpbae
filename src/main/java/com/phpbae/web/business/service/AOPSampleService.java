@@ -21,30 +21,31 @@ public class AOPSampleService {
     @Before(value = "execution(* com.phpbae.web.business.service..*Service.*(..))")
     public void before(JoinPoint joinPoint){
         // 메서드 시작 시, 동작하는 어드바이스
-        System.out.println("Hello before!");
+        System.out.println("Hello before! ** 메서드 호출되기 전에 나온다!");
         LOGGER.info("로깅");
     }
 
     @After(value = "execution(* com.phpbae.web.business.service..*Service.*(..))")
     public void after(JoinPoint joinPoint){
         // 메서드 종료 시, 동작하는 어드바이스
-        System.out.println("Hello after!");
+        System.out.println("Hello after! ** 메서드 호출된 후에 나온다!");
         LOGGER.info("로깅");
     }
 
     @AfterReturning(value = "execution(* com.phpbae.web.business.service..*Service.*(..))")
     public void afterRunning(JoinPoint joinPoint){
         // 메서드가 정상 종료 됬을 때, 동작하는 어드바이스
-        System.out.println("Hello afterRunning!");
+        System.out.println("Hello afterRunning! ** 메서드 호출된 후에 나온다!(성공)");
         LOGGER.info("로깅");
     }
 
     @Around(value = "execution(* com.phpbae.web.business.service..*Service.*(..))")
     public void around(JoinPoint joinPoint){
         // 메서드 호출 전 후에, 동작하는 어드바이스
-        System.out.println("Hello around!");
+        System.out.println("Hello around! ** 메서드 호출 전 후에 나온다!");
         LOGGER.info("로깅");
     }
+
     @AfterThrowing(value = "execution(* com.phpbae.web.business.service..*Service.*(..))", throwing = "ex")
     public void afterThrowing(JoinPoint joinPoint, Throwable ex){
         // 메서드 호출이 예외를 던지면, 동작하는 어드바이스

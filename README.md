@@ -10,6 +10,7 @@
 - mysql-connector-java 8.0.11
 - servlet-api 4.0.0
 - junit 4.12
+- slf4j-api / slf4j-simple 1.7.25
 
 
 ## spring library & API List
@@ -25,6 +26,7 @@ spring-tx
 spring-orm
 spring-jdbc
 spring-test
+spring-aspects
 spring-data-jpa
 ```
 
