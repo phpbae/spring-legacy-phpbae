@@ -8,7 +8,7 @@
     <mvc:annotation-driven/>
 
     <!-- component scan -->
-    <context:component-scan base-package="com.phpbae.web.presentation, com.phpbae.web.config"></context:component-scan>
+    <context:component-scan base-package="com.phpbae.web.*"></context:component-scan>
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

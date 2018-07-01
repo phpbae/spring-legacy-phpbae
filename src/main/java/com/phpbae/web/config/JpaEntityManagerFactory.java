@@ -16,7 +16,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.phpbae.web.dao.repository")
+@EnableJpaRepositories(basePackages="com.phpbae.web.dao.repository")
 public class JpaEntityManagerFactory {
 
     @Bean
