@@ -48,7 +48,7 @@ public class JpaEntityManagerFactory {
      * @param entityManagerFactory
      * @return
      */
-    @Bean
+    @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
     }

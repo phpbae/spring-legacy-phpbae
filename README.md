@@ -11,6 +11,7 @@
 - servlet-api 4.0.0
 - junit 4.12
 - slf4j-api / slf4j-simple 1.7.25
+- aspectjrt / aspectjweaver 1.8.13
 
 
 ## spring library & API List
@@ -155,4 +156,43 @@ spring container shotdown
 1. @PreDestroy (어노테이션)
 2. DisposableBean destroy() (인테페이스 구현)
 3. destroy-method (Bean 정의 메서드 지정)
+```
+
+- sampleController3
+```
+sampleController3 에는 AOP와 로깅처리 예제가 작성되어있습니다.
+
+AOP용어(Aspect Orient Programming(관점 지향 프로그래밍)의 약자)
+1. Aspect
+ 관심사 입니다. 하나 또는 그 이상의 어드바이스와 포인트컷을 조합한 것.
+2. Join Point
+ 어드바이스가 실행하는 동작을 끼워 넣을 수 있는 때를 의미.
+3. Advice
+ 조인 포인트에서 실행되는 코드를 의미(로그, 트랜잭션 관리 등)
+4. Pointcut
+ 조인 포인트를 조건으로 거르는 필터(조인 포인트와 어드바이스 중간에 있으면서, 어떤 어드바이스를 호출할지 선별)
+ 
+Spring 에서 제공하는 어드바이스
+Before
+After
+AfterRunning
+Around
+AfterThrowing
+
+@Aspect 오토프록시를 사용할 때 CGLIB 프록시를 강제하려면 <aop:aspectj-autoproxy> 요소의 'proxy-target-class' 속성을 true로 설정
+
+- AOP 관련해서 JoinPoint를 파라미터로 전달받을 경우 반드시 첫번째 파라미터로 지정해야 함(그 외는 예외 발생)
+- JoinPoint 인터페이스는 호출되는 대상 객체, 메서드 그리고 전달되는 파라미터 목록에 접근할 수 있는 메서드를 제공
+  - Signature getSignature( ) - 호출되는 메서드에 대한 정보를 구함
+  - Object getTarget( ) - 대상 객체를 구함
+  - Object[ ] getArgs( ) - 파라미터 목록을 구함
+
+- org.aspectj.lang.Signature 인터페이스는 호출되는 메서드와 관련된 정보를 제공하기 위해 다음과 같은 메서드를 정의
+  - String getName( ) - 메서드의 이름을 구함
+  - String toLongName( ) - 메서드를 완전하게 표현한 문장을 구함(메서드의 리턴 타입, 파라미터 타입 모두 표시)
+  - String toShortName( ) - 메서드를 축약해서 표현한 문장을 구함(메서드의 이름만 구함)
+
+- Around Advice의 경우 org.aspectj.lang.ProceedingJoinPoint를 첫 번째 파라미터로 전달받는데 해당 인터페이스는 프록시 대상 객체를 호출할 수있는 proceed() 메서드를 제공
+- ProceedingJoinPoint는 JoinPoint 인터페이스를 상속받았기 때문에 Signature를 이용하여 대상 객체, 메서드 및 전달되는 파라미터에 대한 정보를 구할 수 있음
+
 ```
