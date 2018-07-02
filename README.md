@@ -5,6 +5,7 @@
 - Java 1.8
 - spring 4.3.18.RELEASE
 - spring-data-jpa 1.11.13.RELEASE
+- spring-security-xxx 4.2.7.RELEASE
 - hibernate 5.3.1.Final
 - lombok 1.18.0
 - mysql-connector-java 8.0.11
@@ -29,6 +30,9 @@ spring-jdbc
 spring-test
 spring-aspects
 spring-data-jpa
+spring-security-config
+spring-security-core
+spring-security-web
 ```
 
 ## 구동환경
@@ -195,4 +199,22 @@ AfterThrowing
 - Around Advice의 경우 org.aspectj.lang.ProceedingJoinPoint를 첫 번째 파라미터로 전달받는데 해당 인터페이스는 프록시 대상 객체를 호출할 수있는 proceed() 메서드를 제공
 - ProceedingJoinPoint는 JoinPoint 인터페이스를 상속받았기 때문에 Signature를 이용하여 대상 객체, 메서드 및 전달되는 파라미터에 대한 정보를 구할 수 있음
 
+```
+
+
+- sampleController4
+```
+sampleController4 에는 트랜잭션에 대한 예제를 맛보실수 있습니다.
+트랜잭션 설정은 명시적 / 선언적 트랜잭션을 이용할 수 있습니다.
+여기서는 명시적 트랜잭션으로 설정했습니다.(aop를 이용하는 방식)
+```
+
+
+- sampleController5
+```
+security 설정하고 밑에와 같은 에러가 발생.
+org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+check whether you have multiple ContextLoader* definitions in your web.xml
+밑에 링크 참조 : 
+https://javadeveloperzone.com/common-error/spring-security-check-whether-multiple-contextloader-definitions-web-xml/
 ```
