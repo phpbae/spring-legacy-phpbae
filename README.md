@@ -140,7 +140,7 @@ Bean scope(총 5가지)
 bean 생명주기는 
 1. InitializingBean / DisposableBean 인터페이스 구현
 2. @PostConstruct / @PreDestroy
-3. XML 에서 init-methoc / destroy-method 또는 @Bean(initMethod = "", destroyMethod = "")
+3. XML 에서 init-method / destroy-method 또는 @Bean(initMethod = "", destroyMethod = "")
 언제 사용하냐면, 초기화부분은 주로 Bean이 제대로 생성이 되었는지에 대한 확인(유효성 검사)이며 소멸부분은 자원의 반납을 위해 주로 사용한다.
 
 Bean Life Cycle
@@ -218,4 +218,3 @@ check whether you have multiple ContextLoader* definitions in your web.xml
 밑에 링크 참조 : 
 https://javadeveloperzone.com/common-error/spring-security-check-whether-multiple-contextloader-definitions-web-xml/
 ```
-
