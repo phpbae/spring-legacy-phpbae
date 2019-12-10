@@ -55,24 +55,29 @@ spring-security-web
 dispatcher-servlet.xml / applicationContext.xml 관계에 대한 내용
 - 스프링 MVC는 1개 이상의 DispatcherServlet 설정이 가능.
 - DispatcherServlet 설정은 web.xml 파일에 설정 내용을 작성한다.
+
 <servlet>
-<servlet-name>dispatcer</servlet-name>
-<servlet-class>
-org.springframework.web.servlet.DispatcerServlet
-</servlet-class>
+  <servlet-name>dispatcer</servlet-name>
+  
+  <servlet-class>
+    org.springframework.web.servlet.DispatcerServlet
+  </servlet-class>
 </servlet>
 - 위와 같이 설정을 하였다면,  <servlet-name>-servlet.xml 파일을 로드하게 된다.
+-> dispatcer-servlet.xml
 
 - 다른 설정파일을 사용하고 싶은경우에는, contextConfigLocation 초기화 파라미터에 설정 파일 목록을 지정 
+
 <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/applicationContext.xml</param-value>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>/WEB-INF/applicationContext.xml</param-value>
 </context-param>
 
 - 만약, 2개 이상의 dispatcher servlet을 설정하면, 각각 별도의 WebApplicationContext를 생성하는데 서로 설정된 Bean을 참조하고 싶다면 ContextLoaderListener를 사용하여 공통으로 사용될 빈을 설정할 수 있게 된다. 다음과 같이 ContextLoaderListener를 ServletListener로 등록.
 - 웹 어플리케이션이 시작되는 시점에 ApplicationContext을 로딩하며, 로딩된 빈정보는 모든 WebApplicationContext들이 참조할 수 있다.
+
 <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
 
 //------------- 예제
