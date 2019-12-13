@@ -121,7 +121,10 @@ dispatcher-servlet.xml / applicationContext.xml 관계에 대한 내용
 @Controller : 클래스
 @RequestMapping : 클레스, 메서드
 @ResponseBody : 메서드, 리턴타입
+
 RedirectAttributes 를 이용한, 리다이렉트 시점에 원하는 데이터를 임시로 넘기는 작업
+redirectAttributes.addFlashAttribute("key", value); 
+addFlash 는 URI 뒤에 쿼리스트링형태로 붙지는 않는다. 세션에 저장 후, 리다이렉트 후 소멸한다.
 
 JDBC 코드와 JDBC 코드에 문제점이 정리 되어있습니다. exampleJDBC() 참조
 JPA 예제가 작성되어 있습니다. (설정은 JavaConfig 방식으로 구현 / JpaEntityManagerFactory Class 참조)
