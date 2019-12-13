@@ -113,9 +113,11 @@ dispatcher-servlet.xml / applicationContext.xml 관계에 대한 내용
 
 ```
 
-- SampleController
+
+- SampleController.java
 ```
 해당 컨트롤러에는 기초적인 컨트롤러 생성 실습 코드가 작성되어 있습니다.
+
 @Controller : 클래스
 @RequestMapping : 클레스, 메서드
 @ResponseBody : 메서드, 리턴타입
@@ -123,11 +125,11 @@ RedirectAttributes 를 이용한, 리다이렉트 시점에 원하는 데이터�
 
 JDBC 코드와 JDBC 코드에 문제점이 정리 되어있습니다. exampleJDBC() 참조
 JPA 예제가 작성되어 있습니다. (설정은 JavaConfig 방식으로 구현 / JpaEntityManagerFactory Class 참조)
-JPA는 EntityManager를 생성해서 사용하며, 취득하는 방법은 EntityManagerFactoryBean을 설정하여 생성합니다. (org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean)
+JPA는 EntityManager(엔티티매니저)를 생성해서 사용하며, 취득하는 방법은 EntityManagerFactoryBean(엔티티매니저팩토리)을 설정하여 생성합니다. (org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean)
 
 ```
 
-- SampleController2
+- SampleController2.java
 ```
 해당 컨트롤러에는 spring bean 생명주기 예제 코드가 작성되어 있습니다.
 
