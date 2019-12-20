@@ -51,6 +51,9 @@ spring-security-web
 5. dataSource //org.springframework.jdbc.datasource.DriverManagerDataSource
 ```
 
+
+/src/main/webapp/WEB-INF/web.xml
+/src/main/webapp/WEB-INF/dispatcher-servlet.xml
 ```
 dispatcher-servlet.xml / applicationContext.xml 관계에 대한 내용
 - 스프링 MVC는 1개 이상의 DispatcherServlet 설정이 가능.
@@ -63,9 +66,8 @@ dispatcher-servlet.xml / applicationContext.xml 관계에 대한 내용
     org.springframework.web.servlet.DispatcerServlet
   </servlet-class>
 </servlet>
-- 위와 같이 설정을 하였다면,  <servlet-name>-servlet.xml 파일을 로드하게 된다.
--> dispatcer-servlet.xml
 
+- 위와 같이 설정을 하였다면,  <servlet-name>-servlet.xml 파일을 로드하게 된다. (dispatcher-servlet.xml)
 - 다른 설정파일을 사용하고 싶은경우에는, contextConfigLocation 초기화 파라미터에 설정 파일 목록을 지정 
 
 <context-param>
