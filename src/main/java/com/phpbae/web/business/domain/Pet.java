@@ -25,5 +25,4 @@ public class Pet implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Owner.class)
     @JoinColumn(name = "ownerIdx", referencedColumnName = "ownerIdx")
     private Owner owner;
-
 }

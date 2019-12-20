@@ -38,6 +38,14 @@ spring-security-web
 ## 구동환경
 - Tomcat 9.0.8
 - DB : MySQL 5.7
+- db info : 
+```
+db name : test
+id : root
+pw : 1234
+
+JPA set(JpaEntityManagerFactory.java 참조)
+```
 
 ## Note
 
@@ -46,9 +54,9 @@ spring-security-web
 ```
 1. component-scan
 2. annotation-driven
-3. InternalResourceViewResolver  //Spring MVC에서 View는 사용자에게 결과를 랜더링하여 보여주는 Bean
+3. InternalResourceViewResolver // Spring MVC에서 View는 사용자에게 결과를 랜더링하여 보여주는 Bean
 4. resource handler mapping
-5. dataSource //org.springframework.jdbc.datasource.DriverManagerDataSource
+5. dataSource // org.springframework.jdbc.datasource.DriverManagerDataSource
 ```
 
 
