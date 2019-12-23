@@ -1,21 +1,22 @@
 # spring-legacy-phpbae
 
 
-## API version & spec in project
-- Java 1.8
-- spring 4.3.18.RELEASE
-- spring-data-jpa 1.11.13.RELEASE
-- spring-security-xxx 4.2.7.RELEASE
-- hibernate 5.3.1.Final
-- lombok 1.18.0
-- mysql-connector-java 8.0.11
-- servlet-api 4.0.0
-- junit 4.12
-- slf4j-api / slf4j-simple 1.7.25
-- aspectjrt / aspectjweaver 1.8.13
+### API version & spec in project
+
+> `- Java 1.8`  
+`- spring 4.3.18.RELEASE`  
+`- spring-data-jpa 1.11.13.RELEASE`  
+`- spring-security-xxx 4.2.7.RELEASE`  
+`- hibernate 5.3.1.Final`  
+`- lombok 1.18.0`  
+`- mysql-connector-java 8.0.11`  
+`- servlet-api 4.0.0`  
+`- junit 4.12`  
+`- slf4j-api / slf4j-simple 1.7.25`   
+`- aspectjrt / aspectjweaver 1.8.13`
 
 
-## spring library & API List
+### spring library & API List
 
 ```
 spring-context
@@ -35,17 +36,20 @@ spring-security-core
 spring-security-web
 ```
 
-## 구동환경
-- Tomcat 9.0.8
-- DB : MySQL 5.7
-- db info : 
-```
-db name : test
-id : root
-pw : 1234
+### 구동환경
 
-JPA set(JpaEntityManagerFactory.java 참조)
-```
+> `Tomcat 9.0.8`  
+`DB : MySQL 5.7`    
+ ```
+ // TEST LOCAL DB INFO
+ db name : test
+ id : root
+ pw : 1234
+ 
+ JPA set(JpaEntityManagerFactory.java 참조)
+ ```
+ 
+ ---
 
 ## Note
 
@@ -147,13 +151,16 @@ JPA는 EntityManager(엔티티매니저)를 생성해서 사용하며, 취득하
 해당 컨트롤러에는 spring bean 생명주기 예제 코드가 작성되어 있습니다.
 
 Bean scope(총 5가지)
-- singleton : default / 싱글턴으로 인스턴스를 생성
+- singleton : default / 싱글턴으로 인스턴스를 생성 / single beans cache 에 저장
 - prototype : 이용할 때마다 인스턴스 생성 getBean()
 - request : request 스코프인 동안만 인스턴스 생존 (각각의 HTTP request 는 자신만의 인스턴스를 가짐)
 - session : session 스코프인 동안만 인스턴스 생존
 - application : application 스코프인 동안만 인스턴스 생존
 
+* annotation 설정
 @Scope(value = "")
+
+* xml 설정
 <bean id="beanLifeCycleTest" class="com.phpbae.web.business.service.BeanLifeCycleTest" scope="singleton"></bean>
 
 
