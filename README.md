@@ -127,6 +127,7 @@ dispatcher-servlet.xml / applicationContext.xml 관계에 대한 내용
 
 ```
 
+---
 
 - SampleController.java
 ```
@@ -145,6 +146,8 @@ JPA 예제가 작성되어 있습니다. (설정은 JavaConfig 방식으로 구�
 JPA는 EntityManager(엔티티매니저)를 생성해서 사용하며, 취득하는 방법은 EntityManagerFactoryBean(엔티티매니저팩토리)을 설정하여 생성합니다. (org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean)
 
 ```
+
+---
 
 - SampleController2.java
 ```
