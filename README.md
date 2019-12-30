@@ -123,7 +123,8 @@ dispatcher-servlet.xml / applicationContext.xml 관계에 대한 내용
 	</init-param>
 </servlet>
 
-- employee-servlet 과 webservice-servlet.xml 에 정의된 Bean들은 서로 참조할 수 없지만, easycompany-service.xml / easycompany-dao.xml 에 정의된 Bean들은 참조가 가능하다. 
+- employee-servlet 과 webservice-servlet.xml 에 정의된 Bean들은 서로 참조할 수 없지만, 
+easycompany-service.xml / easycompany-dao.xml 에 정의된 Bean들은 참조가 가능하다. 
 
 ```
 
