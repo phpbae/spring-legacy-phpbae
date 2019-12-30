@@ -244,4 +244,16 @@ org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web app
 check whether you have multiple ContextLoader* definitions in your web.xml
 밑에 링크 참조 : 
 https://javadeveloperzone.com/common-error/spring-security-check-whether-multiple-contextloader-definitions-web-xml/
+
+- AbstractSecurityWebApplicationInitializer class 상속 
+- XML 설정 (web.xml)
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 ```
